@@ -25,9 +25,9 @@ WORKDIR /app
 # USER user
 
 # # All users can use /home/user as their home directory
-# ENV HOME=/home/user
-# RUN mkdir $HOME/.cache $HOME/.config \
-#  && chmod -R 777 $HOME
+ENV HOME=/home/user
+RUN mkdir $HOME/.cache $HOME/.config \
+ && chmod -R 777 $HOME
 
 # Set up the Conda environment (using Miniforge)
 ENV PATH=$HOME/mambaforge/bin:$PATH
