@@ -1,31 +1,43 @@
-# base image를 ubuntu
-# cuda version 확인하고 변수로 두기
-FROM pytorch/pytorch
-MAINTAINER jylee
+FROM nvidia/cuda:11.5.1-base-ubuntu20.04
 
-# timezone TZ
+# Remove any third-party apt sources to avoid issues with expiring keys.
+RUN rm -f /etc/apt/sources.list.d/*.list
 
-LABEL "purpose"="test"
+# Install some basic utilities
+RUN apt-get update && apt-get install -y \
+    curl \
+    ca-certificates \
+    sudo \
+    git \
+    bzip2 \
+    libx11-6 \
+ && rm -rf /var/lib/apt/lists/*
 
-# libraries, essential
-RUN pip install pandas
+# Create a working directory
+RUN mkdir /app
+WORKDIR /app
 
-# libraries, the else
+# Create a non-root user and switch to it
+RUN adduser --disabled-password --gecos '' --shell /bin/bash user \
+ && chown -R user:user /app
+RUN echo "user ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/90-user
+USER user
 
-# Set variable for archive.ubuntu, mirror.kakao, etc.
+# All users can use /home/user as their home directory
+ENV HOME=/home/user
+RUN mkdir $HOME/.cache $HOME/.config \
+ && chmod -R 777 $HOME
 
-# printf "/etc/pip.conf"
+# Set up the Conda environment (using Miniforge)
+ENV PATH=$HOME/mambaforge/bin:$PATH
+COPY environment.yml /app/environment.yml
+RUN curl -sLo ~/mambaforge.sh https://github.com/conda-forge/miniforge/releases/download/4.12.0-2/Mambaforge-4.12.0-2-Linux-x86_64.sh \
+ && chmod +x ~/mambaforge.sh \
+ && ~/mambaforge.sh -b -p ~/mambaforge \
+ && rm ~/mambaforge.sh \
+ && mamba env update -n base -f /app/environment.yml \
+ && rm /app/environment.yml \
+ && mamba clean -ya
 
-# libraries, high-level lib, tmux, git, pip, zsh, etc.
-
-# set user, group
-
-# requirement.txt
-
-WORKDIR /home
-
-# set ENV, enviromental variable
-
-# install requirement
-
-# CMD?
+# Set the default command to python3
+CMD ["python3"]
