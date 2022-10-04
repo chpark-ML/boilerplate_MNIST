@@ -14,7 +14,9 @@ RUN apt-get update && apt-get install -y \
  && rm -rf /var/lib/apt/lists/*
 
 # Create a working directory
-WORKDIR /opt
+RUN mkdir /app
+WORKDIR /app
+# WORKDIR /opt
 
 # # Create a non-root user and switch to it
 # RUN adduser --disabled-password --gecos '' --shell /bin/bash user \
