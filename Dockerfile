@@ -14,7 +14,6 @@ RUN apt-get update && apt-get install -y \
  && rm -rf /var/lib/apt/lists/*
 
 # Create a working directory
-RUN mkdir /opt
 WORKDIR /opt
 
 # Set up the Conda environment (using Miniforge)
