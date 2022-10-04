@@ -1,3 +1,5 @@
+# Reference :
+# https://github.com/anibali/docker-pytorch/blob/master/dockerfiles/1.11.0-cuda11.5-ubuntu20.04/environment.yml
 name: base
 channels:
 - conda-forge
