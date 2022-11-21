@@ -1,7 +1,13 @@
+# How to build:
+# docker build -t 
 # Reference :
 # https://github.com/anibali/docker-pytorch/blob/master/dockerfiles/1.11.0-cuda11.5-ubuntu20.04/Dockerfile
 
+# base image
 FROM nvidia/cuda:11.5.1-base-ubuntu20.04
+
+# maintainer
+LABEL maintainer "chpark <bch0322@gmail.com>"
 
 # args
 ARG USR=MI_alumni
