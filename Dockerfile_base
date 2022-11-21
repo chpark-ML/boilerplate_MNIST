@@ -1,5 +1,5 @@
 # How to build:
-# docker build -t 
+# docker build --tag project:dev_${USER} -f Dockerfile_base . --build-arg USER_ID=$(id -u ${USER}) --build-arg GRUOP_ID=$(id -g ${USER})
 # Reference :
 # https://github.com/anibali/docker-pytorch/blob/master/dockerfiles/1.11.0-cuda11.5-ubuntu20.04/Dockerfile
 
@@ -10,13 +10,17 @@ FROM nvidia/cuda:11.5.1-base-ubuntu20.04
 LABEL maintainer "chpark <bch0322@gmail.com>"
 
 # args
-ARG USR=MI_alumni
+ARG USER_ID
+ARG GRUOP_ID
+
+# set timezone
+# TODO
 
 # Remove any third-party apt sources to avoid issues with expiring keys.
 RUN rm -f /etc/apt/sources.list.d/*.list
 
 # Install some basic utilities
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get -y --no-install-recommends install \
     curl \
     ca-certificates \
     sudo \
@@ -26,7 +30,7 @@ RUN apt-get update && apt-get install -y \
  && rm -rf /var/lib/apt/lists/*
 
 # Create a working directory
-RUN mkdir /opt
+# RUN mkdir /opt    
 WORKDIR /opt
 
 # Create a non-root user and switch to it
@@ -42,14 +46,8 @@ RUN mkdir $HOME/.cache $HOME/.config \
 
 # Set up the Conda environment (using Miniforge)
 ENV PATH=$HOME/mambaforge/bin:$PATH
-COPY environment.yml /opt/environment.yml
-RUN curl -sLo ~/mambaforge.sh https://github.com/conda-forge/miniforge/releases/download/4.12.0-2/Mambaforge-4.12.0-2-Linux-x86_64.sh \
- && chmod +x ~/mambaforge.sh \
- && ~/mambaforge.sh -b -p ~/mambaforge \
- && rm ~/mambaforge.sh \
- && mamba env update -n base -f /opt/environment.yml \
- && rm /opt/environment.yml \
- && mamba clean -ya
+COPY environment.yaml /opt/environment.yaml
+
 
 # Set the default command to python3
-CMD ["/bin/zsh"]
+CMD ["/bin/bash"]
