@@ -39,8 +39,8 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
 
 RUN pip3 install --upgrade pip
 RUN pip3 install pytest pytest-env gputil
-# RUN pip3 install tensorflow==2.6.2
-# RUN pip3 install torch==1.13.0+cu116 torchvision==0.13.1+cu116 -f https://download.pytorch.org/whl/torch_stable.html
+RUN pip3 install tensorflow==2.6.2
+RUN pip3 install torch==1.13.0+cu116 torchvision==0.14.0+cu116 -f https://download.pytorch.org/whl/torch_stable.html
 
 # Create a working directory
 # RUN mkdir /opt    
