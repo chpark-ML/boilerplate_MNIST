@@ -37,10 +37,10 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
     
  && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install --upgrade pip
-RUN pip3 install pytest pytest-env gputil
-RUN pip3 install tensorflow==2.6.2
-RUN pip3 install torch==1.13.0+cu116 torchvision==0.14.0+cu116 -f https://download.pytorch.org/whl/torch_stable.html
+# RUN pip3 install --upgrade pip
+# RUN pip3 install pytest pytest-env gputil
+# RUN pip3 install tensorflow==2.6.2
+# RUN pip3 install torch==1.13.0+cu116 torchvision==0.14.0+cu116 -f https://download.pytorch.org/whl/torch_stable.html
 
 # Create a working directory
 # RUN mkdir /opt    
@@ -58,7 +58,7 @@ RUN mkdir $HOME/.cache $HOME/.config \
  && chmod -R 777 $HOME
 
 # Install requirements
-COPY ./requirements.txt /requirements.txt
+COPY docker/requirements.txt /requirements.txt
 RUN pip3 --no-cache-dir install -r /requirements.txt
 
 # Set the default command to python3
