@@ -1,3 +1,4 @@
+# How to run, e.g., sh docker_2_run.sh dev_chpark
 #!/bin/bash
 docker run \
  -it \
