@@ -1,4 +1,4 @@
-# How to run, e.g., sh docker_2_run.sh dev_chpark
+# How to run, e.g., sh docker_3_run.sh
 #!/bin/bash
 docker run \
  -it \
@@ -7,4 +7,4 @@ docker run \
  -v $pwd:/usr/src/project \
  -v /data_hdd:/data_hdd \
  -v /data_ssd:/data_ssd \
- --name $1 project:$1
+ --name dev_${USER} pytorch:dev_${USER}

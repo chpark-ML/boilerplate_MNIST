@@ -1,0 +1,19 @@
+# base image
+FROM pytorch
+
+# maintainer
+LABEL maintainer "chpark <bch0322@gmail.com>"
+
+### zsh ############################
+# 기본 쉘을 bash에서 zsh로 변환
+RUN chsh -s /bin/zsh
+RUN sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# zsh-autosuggestions, zsh-syntax-highlighting을 플러그인에 추가하는 코드
+RUN git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+
+# Perl이란? : https://happygrammer.github.io/guide/perl/
+# 펄을 활용하면 vi ~/.zshrc를 해서 직접 수정해야하는 부분이 자동화가 가능하다!! 
+RUN perl -pi -w -e 's/ZSH_THEME=.*/ZSH_THEME="agnoster"/g;' ~/.zshrc 
+RUN perl -pi -w -e 's/plugins=.*/plugins=(git ssh-agent zsh-autosuggestions zsh-syntax-highlighting)/g;' ~/.zshrc
