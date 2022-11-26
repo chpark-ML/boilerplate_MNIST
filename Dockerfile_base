@@ -1,0 +1,65 @@
+# Reference :
+# https://github.com/anibali/docker-pytorch/blob/master/dockerfiles/1.11.0-cuda11.5-ubuntu20.04/Dockerfile
+
+# base image
+FROM nvidia/cuda:11.6.1-base-ubuntu20.04
+
+# maintainer
+LABEL maintainer "chpark <bch0322@gmail.com>"
+
+# args
+ARG USER_ID
+ARG GRUOP_ID
+
+# set timezone
+ENV TZ="Asia/Seoul"
+RUN apt-get update && DEBIAN_FRONTEND=noninterative apt-get install tzdata
+RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN dpkg-reconfigure --frontend noninteractive tzdata
+
+# Remove any third-party apt sources to avoid issues with expiring keys.
+RUN rm -f /etc/apt/sources.list.d/*.list
+
+# Install some basic utilities
+RUN apt-get update && apt-get -y --no-install-recommends install \
+    curl \
+    ca-certificates \
+    python3-dev \
+    python3-pip \
+    libgdcm-tools \
+    libsm6 \
+    libxext6 \
+    libxrender-dev \
+    sudo \
+    git \
+    bzip2 \
+    libx11-6 \
+    
+ && rm -rf /var/lib/apt/lists/*
+
+RUN pip3 install --upgrade pip
+RUN pip3 install pytest pytest-env gputil
+RUN pip3 install tensorflow==2.6.2
+RUN pip3 install torch==1.13.0+cu116 torchvision==0.14.0+cu116 -f https://download.pytorch.org/whl/torch_stable.html
+
+# Create a working directory
+# RUN mkdir /opt    
+WORKDIR /opt
+
+# Create a non-root user and switch to it
+RUN adduser --disabled-password --gecos '' --shell /bin/bash user \
+ && chown -R user:user /opt
+RUN echo "user ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/90-user
+USER ${USR}
+
+# All users can use /home/user as their home directory
+ENV HOME=/home/user
+RUN mkdir $HOME/.cache $HOME/.config \
+ && chmod -R 777 $HOME
+
+# Install requirements
+COPY ./requirements.txt /requirements.txt
+RUN pip3 --no-cache-dir install -r /requirements.txt
+
+# Set the default command to python3
+CMD ["/bin/bash"]
