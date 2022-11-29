@@ -1,4 +1,4 @@
-# How to run, e.g., sh docker_2_build_dev.sh
+# How to run, e.g., sh 2_docker_build_dev.sh
 docker build \
  --tag project:dev_${USER} \
  -f ./dockerFile/Dockerfile_base . \

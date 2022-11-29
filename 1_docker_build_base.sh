@@ -1,4 +1,4 @@
-# How to run, e.g., sh docker_1_build_base.sh
+# How to run, e.g., sh 1_docker_build_base.sh
 docker build \
  --tag pytorch:dev_${USER} \
  -f ./dockerFile/Dockerfile_base . \

@@ -1,4 +1,4 @@
-# How to run, e.g., sh docker_3_run.sh
+# How to run, e.g., sh 3_docker_run.sh
 #!/bin/bash
 docker run \
  -it \
