@@ -1,5 +1,5 @@
 # base image
-FROM pytorch
+FROM pytorch:dev_${USER}
 
 # maintainer
 LABEL maintainer "chpark <bch0322@gmail.com>"
