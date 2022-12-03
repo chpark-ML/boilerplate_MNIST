@@ -7,4 +7,4 @@ docker run \
  -v $pwd:/usr/src/project \
  -v /data_hdd:/data_hdd \
  -v /data_ssd:/data_ssd \
- --name dev_${USER} pytorch:dev_${USER}
+ --name dev_${USER} project:dev_${USER}
