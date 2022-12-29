@@ -2,7 +2,7 @@
 #!/bin/bash
 docker run \
  -it \
- --shm-size=1g \
+ --shm-size=10g \
  --ulimit memlock=-1 \
  -v $pwd:/usr/src/project \
  -v /data_hdd:/data_hdd \
