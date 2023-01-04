@@ -1,3 +1,0 @@
-# base image
-ARG BASE_IMAGE
-FROM base:TAG

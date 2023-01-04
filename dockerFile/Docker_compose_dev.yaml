@@ -1,0 +1,13 @@
+version: '3.0'  # YAML 파일 포맷 버전
+services:
+  core:
+    image: project:dev_${USER}
+    build:
+      context: ../
+      dockerfile: ./Dockerfile_dev
+      args:
+        CUDA_VERSION: ${CUDA_VERSION:-11.2.2}
+        PROJECT_ROOT: ${PROJECT_ROOT:~/opt/core}
+    volumes:
+      - ../:${PROJECT_ROOT}:~/opt/core
+    working_dir: ${PROJECT_ROOT}:~/opt/core
