@@ -1,3 +1,4 @@
+
 echo "------------------------------"
 echo "start stopping"
 docker stop `docker ps -a -q`

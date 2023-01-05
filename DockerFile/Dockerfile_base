@@ -6,10 +6,6 @@ FROM nvidia/cuda:11.6.1-base-ubuntu20.04
 # maintainer
 LABEL maintainer "chpark <bch0322@gmail.com>"
 
-# args
-ARG USER_ID
-ARG GRUOP_ID
-
 # set timezone
 ENV TZ="Asia/Seoul"
 RUN apt-get update && DEBIAN_FRONTEND=noninterative apt-get install tzdata
@@ -42,10 +38,10 @@ RUN pip3 install tensorflow==2.6.2
 RUN pip3 install torch==1.13.0+cu116 torchvision==0.14.0+cu116 -f https://download.pytorch.org/whl/torch_stable.html
 
 # Create a working directory
-RUN mkdir /usr/src/project    
-WORKDIR /usr/src/project
+# RUN mkdir /usr/src/project    
+# WORKDIR /usr/src/project
 
-# Create a non-root user and switch to it
+# # Create a non-root user and switch to it
 RUN adduser --disabled-password --gecos '' --shell /bin/bash user \
  && chown -R user:user /opt
 RUN echo "user ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/90-user
@@ -57,7 +53,7 @@ RUN mkdir $HOME/.cache $HOME/.config \
  && chmod -R 777 $HOME
 
 # Install requirements
-COPY dockerFile/requirements_base.txt /requirements_base.txt
+COPY requirements_base.txt /requirements_base.txt
 RUN pip3 --no-cache-dir install -r /requirements_base.txt
 
 # 설치로 생성된 캐시 파일들을 삭제해서 용량 줄이기!

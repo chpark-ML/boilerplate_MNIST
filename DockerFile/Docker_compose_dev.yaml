@@ -1,0 +1,21 @@
+version: '3.0'  # YAML 파일 포맷 버전
+services:
+  core:
+    hostname: core
+    image: ${IMAGE_NAME}:dev-1.0.0
+    ipc: host 
+    tty: true
+    stdin_open: true
+    volumes:
+      - ${CURRENT_PATH}:${PROJECT_ROOT} 
+    working_dir: ${PROJECT_ROOT}
+    build:
+      context: ${DOCKER_BUILD_CONTEXT_PATH}
+      dockerfile: ${DOCKERFILE_BASE_NAME}
+      args: 
+        BASE_IMAGE: ${}
+        PROJECT_ROOT: ${PROJECT_ROOT}
+        GRP: ${GRP}
+        USR: ${USR}
+        GID: ${GID}
+        UID: ${UID}
