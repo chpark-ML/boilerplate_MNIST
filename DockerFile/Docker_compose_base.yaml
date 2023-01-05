@@ -1,7 +1,0 @@
-version: '3.0'  # YAML 파일 포맷 버전
-services:
-  core:
-    image: core-base:latest
-    build:
-      context: ${DOCKER_BUILD_CONTEXT_PATH}
-      dockerfile: ${DOCKERFILE_BASE_NAME}

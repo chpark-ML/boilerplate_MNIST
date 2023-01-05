@@ -1,7 +1,8 @@
 # syntax=docker/dockerfile:1.4  # COPY --link 
 
 # base image
-FROM nvidia/cuda:11.6.1-base-ubuntu20.04
+ARG IMAGE_NAME_BASE
+FROM ${IMAGE_NAME_BASE}
 
 # # Create a non-root user and switch to it
 RUN adduser --disabled-password --gecos '' --shell /bin/bash user \
@@ -15,8 +16,8 @@ RUN mkdir $HOME/.cache $HOME/.config \
  && chmod -R 777 $HOME
 
 # Install requirements
-COPY dockerFile/requirements_base.txt /requirements_base.txt
-RUN pip3 --no-cache-dir install -r /requirements_base.txt
+COPY requirements_dev.txt /requirements_dev.txt
+RUN pip3 --no-cache-dir install -r /requirements_dev.txt
 
 # 설치로 생성된 캐시 파일들을 삭제해서 용량 줄이기!
 RUN apt-get clean && \
@@ -24,6 +25,6 @@ RUN apt-get clean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/cache/* && \
     rm -rf /var/lib/log/*
-    
+
 WORKDIR ${PROJECT_ROOT}
-CMD ["/bin/zsh"]
+CMD ["/bin/bash"]
