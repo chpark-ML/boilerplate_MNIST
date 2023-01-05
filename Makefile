@@ -58,7 +58,7 @@ run-base:
 ls-base: 
 	docker compose ls -a
 
-build-dev:
+build-dev: build-base
 	COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker compose -f ${DOCKER_BUILD_CONTEXT_PATH}/${DOCKER_COMPOSE_NAME} -p ${PROJECT_NAME} up --build -d ${SERVICE_NAME_DEV}
 up-dev:
 	COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker compose -f ${DOCKER_BUILD_CONTEXT_PATH}/${DOCKER_COMPOSE_NAME} -p ${PROJECT_NAME} up -d ${SERVICE_NAME_DEV}
