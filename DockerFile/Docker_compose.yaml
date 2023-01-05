@@ -25,3 +25,10 @@ services:
         USR: ${USR}
         GID: ${GID}
         UID: ${UID}
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu ]
