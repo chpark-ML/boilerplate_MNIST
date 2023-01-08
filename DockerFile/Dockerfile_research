@@ -7,7 +7,7 @@ FROM nvidia/cuda:11.6.1-base-ubuntu20.04
 RUN adduser --disabled-password --gecos '' --shell /bin/bash user \
  && chown -R user:user /opt
 RUN echo "user ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/90-user
-USER ${USR}
+USER user
 
 # All users can use /home/user as their home directory
 ENV HOME=/home/user
