@@ -5,8 +5,8 @@ ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
 
 # Install requirements
-COPY requirements_prod.txt /requirements_prod.txt
-RUN pip3 --no-cache-dir install -r /requirements_prod.txt
+COPY requirements_product.txt /requirements_product.txt
+RUN pip3 --no-cache-dir install -r /requirements_product.txt
 
 # 설치로 생성된 캐시 파일들을 삭제해서 용량 줄이기!
 RUN apt-get clean && \

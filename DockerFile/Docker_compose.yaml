@@ -6,8 +6,8 @@ services:
       context: ${DOCKER_BUILD_CONTEXT_PATH}
       dockerfile: ${DOCKERFILE_NAME_BASE}
 
-  core-prod:
-    hostname: core-prod
+  core-product:
+    hostname: core-product
     image: ${IMAGE_NAME_PROD}
     ipc: host 
     tty: true

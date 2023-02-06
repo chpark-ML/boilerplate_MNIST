@@ -1,6 +1,6 @@
 SERVICE_NAME = core
 SERVICE_NAME_BASE = ${SERVICE_NAME}-base
-SERVICE_NAME_PROD = ${SERVICE_NAME}-prod
+SERVICE_NAME_PROD = ${SERVICE_NAME}-product
 SERVICE_NAME_DEV = ${SERVICE_NAME}-dev
 SERVICE_NAME_RESEARCH = ${SERVICE_NAME}-research
 COMMAND_BASE = /bin/bash
@@ -14,7 +14,7 @@ GRP = $(shell id -gn)
 USR = $(shell id -un)
 
 IMAGE_NAME_BASE = ${SERVICE_NAME}-${USR}-base:1.0.0
-IMAGE_NAME_PROD = ${SERVICE_NAME}-${USR}-prod:1.0.0
+IMAGE_NAME_PROD = ${SERVICE_NAME}-${USR}-product:1.0.0
 IMAGE_NAME_DEV = ${SERVICE_NAME}-${USR}-dev:1.0.0
 IMAGE_NAME_RESERACH = ${SERVICE_NAME}-${USR}-research:latest
 WORKDIR_PATH = /opt/${SERVICE_NAME}
@@ -23,7 +23,7 @@ CURRENT_PATH = $(shell pwd)
 DOCKER_BUILD_CONTEXT_PATH = ./DockerFile
 
 DOCKERFILE_NAME_BASE = Dockerfile_base
-DOCKERFILE_NAME_PROD = Dockerfile_prod
+DOCKERFILE_NAME_PROD = Dockerfile_product
 DOCKERFILE_NAME_DEV = Dockerfile_dev
 DOCKERFILE_NAME_RESEARCH = Dockerfile_research
 DOCKER_COMPOSE_NAME = Docker_compose.yaml
