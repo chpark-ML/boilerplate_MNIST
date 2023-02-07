@@ -20,11 +20,11 @@ services:
       dockerfile: ${DOCKERFILE_NAME_PROD}
       args: 
         BASE_IMAGE: ${IMAGE_NAME_BASE}
-        WORKDIR_PATH: ${WORKDIR_PATH}
-        GRP: ${GRP}
-        USR: ${USR}
-        GID: ${GID}
-        UID: ${UID}
+        WORKDIR_PATH: ${WORKDIR_PATH:-/opt/core}
+        GRP: ${GRP:-noname}
+        USR: ${USR:-noname}
+        GID: ${GID:-noname}
+        UID: ${UID:-noname}
     deploy:
       resources:
         reservations:
@@ -43,15 +43,16 @@ services:
       - ${CURRENT_PATH}:${WORKDIR_PATH} 
     working_dir: ${WORKDIR_PATH}
     build:
+      target: ${TARGET_STAGE:-train}
       context: ${DOCKER_BUILD_CONTEXT_PATH}
       dockerfile: ${DOCKERFILE_NAME_DEV}
       args: 
-        BASE_IMAGE: ${IMAGE_NAME_BASE}
-        WORKDIR_PATH: ${WORKDIR_PATH}
-        GRP: ${GRP}
-        USR: ${USR}
-        GID: ${GID}
-        UID: ${UID}
+        BASE_IMAGE: ${IMAGE_NAME_PROD}
+        WORKDIR_PATH: ${WORKDIR_PATH:-/opt/core}
+        GRP: ${GRP:-noname}
+        USR: ${USR:-noname}
+        GID: ${GID:-noname}
+        UID: ${UID:-noname}
     deploy:
       resources:
         reservations:
