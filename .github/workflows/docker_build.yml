@@ -24,13 +24,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    
-    - name: build docker research image
-      run: |
-        rm -f dockerfile/.env
-        make env
-        make build-research
-        rm -f dockerfile/.env
                 
     - name: build docker dev image
       run: |
@@ -38,3 +31,10 @@ jobs:
         make env
         make build-dev
         rm -f dockerfile/.env
+    
+    # - name: build docker research image
+    #   run: |
+    #     rm -f dockerfile/.env
+    #     make env
+    #     make build-research
+    #     rm -f dockerfile/.env
