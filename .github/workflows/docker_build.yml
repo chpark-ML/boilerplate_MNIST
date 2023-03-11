@@ -24,14 +24,14 @@ jobs:
     
     - name: build docker research image
       run: |
-        rm -f .env
+        rm -f dockerfile/.env
         make env
         make build-research
-        rm .env
-        
+        rm -f dockerfile/.env
+                
     - name: build docker dev image
       run: |
-        rm -f .env
+        rm -f dockerfile/.env
         make env
         make build-dev
-        rm .env
+        rm -f dockerfile/.env
