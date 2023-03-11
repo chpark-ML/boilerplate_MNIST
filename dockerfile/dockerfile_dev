@@ -23,6 +23,9 @@ ENV PYTHONPATH=${WORKDIR_PATH}
 COPY requirements_dev.txt /requirements_dev.txt
 RUN apt-get update && apt-get -y --no-install-recommends install \
     zsh \ 
+    vim \
+    nano \
+    tmux \
  && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd -f -g ${GID} ${GRP} && \
