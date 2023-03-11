@@ -16,12 +16,11 @@
     </a>
 </p>
 
-# boilerplate_MNIST
+# PyTorch boilerplate, MNIST 🚗
 MNIST 데이터셋을 통해서 분류 문제를 학습하는 딥러닝 모델 학습 파이프라인입니다.
-해당 프로젝트
 
 ***
-## Overview of project
+## Overview of project 👍
 - **dockerfile** (docker build context)
 - **makefile** (docker build handler)
 - **project** (model training project)
@@ -35,7 +34,7 @@ MNIST 데이터셋을 통해서 분류 문제를 학습하는 딥러닝 모델 �
 
 
 ***
-## DockerFile & DockerCompose
+## DockerFile & DockerCompose 👍
 도커를 활용한 개발환경 구축은 다음 링크를 참조하여 작성되었음. [Cresset](https://github.com/cresset-template/cresset)
 
 ### 1. How to build a development environment
@@ -56,7 +55,7 @@ make exec-dev
 - 빌드 된 도커 이미지를 통해 docker container를 생성하고 실행
 
 ***
-## Project
+## Project 👍
 
 MNIST 데이터셋을 학습하고 분류 문제를 푸는 딥러닝 모델 학습 파이프라인 예제 코드입니다.
 
