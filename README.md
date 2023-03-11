@@ -1,6 +1,6 @@
 <p align="left">
     <a href="https://github.com/chpark-ML/boilerplate_pytorch/actions">
-      <img alt="Tests Passing" src="https://github.com/chpark-ML/boilerplate_pytorch/workflows/docker_build.yml/badge.svg" />
+      <img alt="Tests Passing" src="https://github.com/chpark-ML/boilerplate_pytorch/actions/workflows/docker_build.yml/badge.svg" />
     </a>
     <a href="https://github.com/chpark-ML/boilerplate_pytorch/issues">
       <img alt="Issues" src="https://img.shields.io/github/issues/chpark-ML/boilerplate_pytorch?color=0088ff" />
