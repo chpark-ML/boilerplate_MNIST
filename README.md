@@ -1,11 +1,11 @@
 <p align="left">
-    <a href="https://github.com/anuraghazra/github-readme-stats/actions">
+    <a href="https://github.com/chpark-ML/boilerplate_pytorch/actions">
       <img alt="Tests Passing" src="https://github.com/anuraghazra/github-readme-stats/workflows/Test/badge.svg" />
     </a>
-    <a href="https://github.com/anuraghazra/github-readme-stats/issues">
+    <a href="https://github.com/chpark-ML/boilerplate_pytorch/issues">
       <img alt="Issues" src="https://img.shields.io/github/issues/anuraghazra/github-readme-stats?color=0088ff" />
     </a>
-    <a href="https://github.com/anuraghazra/github-readme-stats/pulls">
+    <a href="https://github.com/chpark-ML/boilerplate_pytorch/pulls">
       <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/anuraghazra/github-readme-stats?color=0088ff" />
     </a>
 </p>
