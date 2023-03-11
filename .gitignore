@@ -1,1 +1,10 @@
 .env
+
+*.npy
+*.h5
+*.png
+*.jpg
+
+*.pt
+*.pth
+*.ckpt
