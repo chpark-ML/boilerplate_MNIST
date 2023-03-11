@@ -32,7 +32,7 @@ ARG USR
 ARG GRP
 
 ARG WORKDIR_PATH
-ENV PATH=${PATH}:${WORKDIR_PATH}
+RUN chmod -R 777 ${WORKDIR_PATH}
 ENV PYTHONPATH=${WORKDIR_PATH}
 
 # Create a non-root user and switch to it
@@ -59,7 +59,6 @@ RUN {   echo "fpath+=${PURE_PATH}"; \
         echo "autoload -Uz promptinit; promptinit"; \
         echo "prompt pure"; \
         echo "source ${ZSH_FILE}"; \
-        echo "alias ll='ls -lh'"; \
     } >> ${WORKDIR_PATH}/.zshrc
 
 WORKDIR ${WORKDIR_PATH}
