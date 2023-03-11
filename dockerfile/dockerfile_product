@@ -1,0 +1,19 @@
+# syntax=docker/dockerfile:1.4  # COPY --link 
+
+# base image
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
+
+# Install requirements
+COPY requirements_product.txt /requirements_product.txt
+RUN pip3 --no-cache-dir install -r /requirements_product.txt
+
+# 설치로 생성된 캐시 파일들을 삭제해서 용량 줄이기!
+RUN apt-get clean && \
+    apt-get autoclean && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/cache/* && \
+    rm -rf /var/lib/log/*
+
+WORKDIR ${WORKDIR_PATH}
+CMD ["/bin/bash"]
