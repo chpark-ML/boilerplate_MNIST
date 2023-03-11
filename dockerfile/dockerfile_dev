@@ -40,17 +40,22 @@ RUN pip3 --no-cache-dir install -r /requirements_dev.txt
 
 # 터미널 설정 변경.
 ARG ZSHRC_PATH=${HOME}/.zshrc
-ARG PURE_PATH=${HOME}/.zsh/pure
+ARG ZSH_PURE_PATH=${HOME}/.zsh/pure
+ARG ZSH_AUTO_PATH=${HOME}/.zsh/zsh-autosuggestions
+ARG ZSH_HIGHLIGHT_PATH=${HOME}/.zsh/zsh-syntax-highlighting
 
-RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# make dir
 RUN mkdir ${WORKDIR_PATH}
-RUN chmod -R 777 ${WORKDIR_PATH}
-
 RUN mkdir -p ${HOME}/.zsh
-RUN chmod -R 777 ${HOME}/.zsh
 
-RUN git clone https://github.com/sindresorhus/pure.git ${PURE_PATH}
-RUN {   echo "fpath+=${PURE_PATH}"; \
+# oh-my-zsh
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Pure
+RUN git clone https://github.com/sindresorhus/pure.git ${ZSH_PURE_PATH}
+
+# prompt
+RUN {   echo "fpath+=${ZSH_PURE_PATH}"; \
         echo "typeset -A mycolors=(lightblue \"#9dd6f9\")"; \
         echo "zstyle :prompt:pure:path color \$mycolors[lightblue]"; \
         echo "zstyle ':prompt:pure:prompt:*' color magenta"; \
