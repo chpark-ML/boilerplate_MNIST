@@ -1,14 +1,15 @@
 <p align="left">
     <a href="https://github.com/chpark-ML/boilerplate_pytorch/actions">
-      <img alt="Tests Passing" src="https://github.com/anuraghazra/github-readme-stats/workflows/Test/badge.svg" />
+      <img alt="Tests Passing" src="https://github.com/chpark-ML/boilerplate_pytorch/workflows/Test/badge.svg" />
     </a>
     <a href="https://github.com/chpark-ML/boilerplate_pytorch/issues">
-      <img alt="Issues" src="https://img.shields.io/github/issues/anuraghazra/github-readme-stats?color=0088ff" />
+      <img alt="Issues" src="https://img.shields.io/github/issues/chpark-ML/boilerplate_pytorch?color=0088ff" />
     </a>
     <a href="https://github.com/chpark-ML/boilerplate_pytorch/pulls">
-      <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/anuraghazra/github-readme-stats?color=0088ff" />
+      <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/chpark-ML/boilerplate_pytorch?color=0088ff">
     </a>
 </p>
+
 
 # PyTorch boilerplate, MNIST 🚗
 MNIST 데이터셋을 통해서 분류 문제를 학습하는 딥러닝 모델 학습 파이프라인입니다.
