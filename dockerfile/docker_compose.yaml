@@ -9,6 +9,7 @@ services:
   ml-product:
     hostname: ml-product
     image: ${IMAGE_NAME_PROD}
+    container_name: ${CONTAINER_NAME_PROD}
     ipc: host 
     tty: true
     stdin_open: true
@@ -36,12 +37,14 @@ services:
   ml-dev:
     hostname: ml-dev
     image: ${IMAGE_NAME_DEV}
+    container_name: ${CONTAINER_NAME_DEV}
     ipc: host 
     tty: true
     stdin_open: true
     volumes:
       - ${CURRENT_PATH}:${WORKDIR_PATH} 
     working_dir: ${WORKDIR_PATH}
+    # user: ${UID}:${GID}
     build:
       target: ${TARGET_STAGE:-train}
       context: ${DOCKER_BUILD_CONTEXT_PATH}
@@ -64,6 +67,7 @@ services:
   ml-research:
     hostname: ml-research
     image: ${IMAGE_NAME_RESERACH}
+    container_name: ${CONTAINER_NAME_RESERACH}
     ipc: host 
     tty: true
     stdin_open: true
