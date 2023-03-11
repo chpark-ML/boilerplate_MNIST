@@ -27,7 +27,6 @@ MNIST 데이터셋을 통해서 분류 문제를 학습하는 딥러닝 모델 �
         - util.py
     - configs
 
-
 ***
 ## DockerFile & DockerCompose 👍
 도커를 활용한 개발환경 구축은 다음 링크를 참조하여 작성되었음. [Cresset](https://github.com/cresset-template/cresset)
