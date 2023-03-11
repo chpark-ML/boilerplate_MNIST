@@ -8,11 +8,14 @@ on:
     paths:
       - 'dockerfile/*'
       - 'makefile'
+  
   pull_request:
     branches: [ "main" ]
     paths:
       - 'dockerfile/*'
       - 'makefile'
+  
+  workflow_dispatch:
 
 jobs:
   build:
