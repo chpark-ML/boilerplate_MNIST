@@ -66,8 +66,8 @@ ARG ZSH_HIGHLIGHT_PATH=${HOME}/.zsh/zsh-syntax-highlighting
 # oh-my-zsh, dir, file color등에 영향
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# pure
-COPY --link --from=fetch-pure --chown=${UID}:${GID} /opt/zsh/pure ${ZSH_PURE_PATH}
+# pure, highlight
+COPY --link --from=fetch-pure --chown=${UID}:${GID} /opt/zsh ${HOME}/.zsh
 RUN {   echo "fpath+=${ZSH_PURE_PATH}"; \
         echo "typeset -A mycolors=(lightblue \"#9dd6f9\")"; \
         echo "zstyle :prompt:pure:path color \$mycolors[lightblue]"; \
@@ -76,11 +76,8 @@ RUN {   echo "fpath+=${ZSH_PURE_PATH}"; \
         echo "zstyle :prompt:pure:git:stash show yes"; \
         echo "autoload -Uz promptinit; promptinit"; \
         echo "prompt pure"; \
+        echo "source ${ZSH_HIGHLIGHT_PATH}/zsh-syntax-highlighting.zsh"; \
     } >> ${ZSHRC_PATH}
-
-# highlight
-COPY --link --from=fetch-pure --chown=${UID}:${GID} /opt/zsh/zsh-syntax-highlighting ${ZSH_HIGHLIGHT_PATH}
-RUN echo "source ${ZSH_HIGHLIGHT_PATH}/zsh-syntax-highlighting.zsh" >> ${HOME}/.zshrc
 
 WORKDIR ${WORKDIR_PATH}
 
