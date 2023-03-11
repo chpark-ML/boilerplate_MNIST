@@ -47,7 +47,7 @@ services:
       context: ${DOCKER_BUILD_CONTEXT_PATH}
       dockerfile: ${DOCKERFILE_NAME_DEV}
       args: 
-        BASE_IMAGE: ${IMAGE_NAME_PROD}
+        BASE_IMAGE: ${IMAGE_NAME_BASE}
         WORKDIR_PATH: ${WORKDIR_PATH:-/opt/core}
         GRP: ${GRP:-noname}
         USR: ${USR:-noname}
