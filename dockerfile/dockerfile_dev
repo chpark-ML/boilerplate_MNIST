@@ -81,4 +81,4 @@ RUN {   echo "fpath+=${ZSH_PURE_PATH}"; \
 
 WORKDIR ${WORKDIR_PATH}
 
-CMD ["/bin/zsh"]
+CMD ["/bin/zsh"] 
