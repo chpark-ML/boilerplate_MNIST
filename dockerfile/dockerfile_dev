@@ -32,7 +32,6 @@ ARG USR
 ARG GRP
 
 ARG WORKDIR_PATH
-RUN chmod -R 777 ${WORKDIR_PATH}
 ENV PYTHONPATH=${WORKDIR_PATH}
 
 # Create a non-root user and switch to it
@@ -52,6 +51,8 @@ COPY requirements_dev.txt /requirements_dev.txt
 RUN pip3 --no-cache-dir install -r /requirements_dev.txt
 
 # 터미널 설정 변경.
+RUN mkdir ${WORKDIR_PATH}
+RUN chmod -R 777 ${WORKDIR_PATH}
 ARG PURE_PATH=${WORKDIR_PATH}/.zsh/pure
 ARG ZSH_FILE=${WORKDIR_PATH}/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 COPY --link --chown=${UID}:${GID} --from=build-pure /opt/zsh ${WORKDIR_PATH}/.zsh
