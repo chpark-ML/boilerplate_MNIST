@@ -16,9 +16,19 @@
 ## DockerFile & DockerCompose
 도커를 활용한 개발환경 구축은 다음 링크를 참조하여 작성되었음. [Cresset](https://github.com/cresset-template/cresset)
 
-### 1. How to start docker
-    ```
-    make env
-    make build-dev
-    make exec-dev
-    ```
+### 1. How to build a development environment
+```
+make env
+make build-dev
+make exec-dev
+```
+
+**`make env`**
+- docker build context (`./dockerfile`) 내부에 `.env` 파일을 생성하고 도커 이미지 빌드를 위한 변수들을 저장
+
+**`make build-dev`**
+- 도커 개발 서비스를 구축하기 위한 명령문
+- makefile에 정의된 dependency에 따라 docker base image를 빌드한 뒤, development docker image 빌드 수행
+
+**`make exec-dev`**
+- 빌드 된 도커 이미지를 통해 docker container를 생성하고 실행
