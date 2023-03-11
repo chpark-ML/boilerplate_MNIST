@@ -1,0 +1,8 @@
+cryptography
+flake8
+numpy
+pymongo
+pytest
+scikit-image
+scikit-learn
+scipy
