@@ -33,7 +33,6 @@ services:
               count: all
               capabilities: [ gpu ]
 
-
   ml-dev:
     hostname: ml-dev
     image: ${IMAGE_NAME_DEV}

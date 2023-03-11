@@ -7,10 +7,12 @@ on:
     branches: [ "main" ]
     paths:
       - 'dockerfile/*'
+      - 'makefile'
   pull_request:
     branches: [ "main" ]
     paths:
       - 'dockerfile/*'
+      - 'makefile'
 
 jobs:
   build:
