@@ -1,0 +1,35 @@
+# This workflow will test docker image build
+
+name: Docker image build
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'dockerfile/*'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'dockerfile/*'
+
+jobs:
+  build:
+  
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: build docker research image
+      run: |
+        rm -f .env
+        make env
+        make build-research
+        rm .env
+        
+    - name: build docker dev image
+      run: |
+        rm -f .env
+        make env
+        make build-dev
+        rm .env
