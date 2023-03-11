@@ -15,7 +15,7 @@ ARG GID
 ARG UID
 ARG USR
 ARG GRP
-
+ARG PASSWD=hello
 ARG WORKDIR_PATH
 ENV PYTHONPATH=${WORKDIR_PATH}
 
@@ -25,11 +25,10 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
     zsh \ 
  && rm -rf /var/lib/apt/lists/*
 
-# Create a non-root user and switch to it
-RUN adduser --disabled-password --gecos '' --shell /bin/zsh ${USR} \ 
-    && chown -R ${USR}:${GRP} /opt
-RUN echo "${USR} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-USER ${USR}
+RUN groupadd -f -g ${GID} ${GRP} && \
+    useradd --shell /bin/zsh --create-home -u ${UID} -g ${GRP} \
+        -p $(openssl passwd -1 ${PASSWD}) ${USR} && \
+    echo "${USR} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 ENV HOME=/home/${USR}
 RUN mkdir ${HOME}/.cache $HOME/.config \
@@ -64,6 +63,7 @@ RUN {   echo "fpath+=${ZSH_PURE_PATH}"; \
         echo "prompt pure"; \
     } >> ${ZSHRC_PATH}
 
+USER ${USR}
 WORKDIR ${WORKDIR_PATH}
 CMD ["/bin/zsh"]
 
