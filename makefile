@@ -8,8 +8,8 @@ SERVICE_NAME_RESEARCH = ${SERVICE_NAME}-research
 # Set command
 COMMAND_BASE = /bin/bash
 COMMAND_PROD = /bin/bash
-COMMAND_DEV = /bin/bash
-COMMAND_RESEARCH = /bin/bash
+COMMAND_DEV = /bin/zsh
+COMMAND_RESEARCH = /bin/zsh
 
 # Get IDs
 GID = $(shell id -g)
