@@ -1,5 +1,6 @@
 # boilerplate_MNIST
 
+***
 ## Overview of project
 - **dockerfile** (docker build context)
 - **makefile** (docker build handler)
@@ -13,6 +14,7 @@
     - configs
 
 
+***
 ## DockerFile & DockerCompose
 도커를 활용한 개발환경 구축은 다음 링크를 참조하여 작성되었음. [Cresset](https://github.com/cresset-template/cresset)
 
@@ -32,3 +34,13 @@ make exec-dev
 
 **`make exec-dev`**
 - 빌드 된 도커 이미지를 통해 docker container를 생성하고 실행
+
+***
+## Project
+
+MNIST 데이터셋을 학습하고 분류 문제를 푸는 딥러닝 모델 학습 파이프라인 예제 코드입니다.
+
+### 1. Model training
+```
+python3 train.py
+```
