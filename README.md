@@ -25,9 +25,6 @@ MNIST 데이터셋을 통해서 분류 문제를 학습하는 딥러닝 모델 �
     - train.py
     - train_test.py
     - utils
-        - dataset.py
-        - model.py
-        - util.py
     - configs
 
 ***
