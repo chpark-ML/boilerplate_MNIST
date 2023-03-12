@@ -1,7 +1,13 @@
 # train config
 defaults:
+  - _self_
   - dataloader: MNIST
-  - model: resnet18
+  - model: mlp
   - optimizer: adamw
   - scheduler: onecycle
   - trainer: trainer
+
+hydra:  
+  output_subdir: null  
+  run:  
+    dir: .

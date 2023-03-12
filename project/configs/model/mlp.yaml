@@ -1,0 +1,4 @@
+# resnet18
+_target_: models.mlp.MLP
+input_dim: 384
+output_dim: 10
