@@ -9,9 +9,8 @@ from omegaconf import DictConfig
 from project.train import train
 
 
-@hydra.main(version_base="1.3.2", config_path="project.configs", config_name="train.yaml")
+@hydra.main(version_base="1.3.2", config_path="configs", config_name="train.yaml")
 def main(config: DictConfig):
-
     return train(config)
 
 if __name__ == "__main__":

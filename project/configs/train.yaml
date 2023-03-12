@@ -1,6 +1,6 @@
 # train config
 defaults:
-  - data: MNIST
+  - dataloader: MNIST
   - model: resnet18
   - optimizer: adamw
   - scheduler: onecycle

@@ -3,10 +3,13 @@ from omegaconf import DictConfig
 
 
 class trainer():
-    pass
-
+    def __init__(self, cfg):
+        self.model = hydra.utils.instantiate(cfg.model)
+        params = filter(lambda p: p.requires_grad, self.model.parameters())
+        self.optimier = hydra.utils.instantiate(cfg.optimizer)
+        self.scheduler = hydra.utils.instantiate(cfg.scheduler)
+        breakpoint()
 
 def train(config: DictConfig):
-    print(config)
-    breakpoint
+    trainer = trainer(config)
     pass

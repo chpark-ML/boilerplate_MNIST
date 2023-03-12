@@ -1,11 +1,10 @@
 .env
 __pycache__
-
+outputs
 *.npy
 *.h5
 *.png
 *.jpg
-
 *.pt
 *.pth
 *.ckpt
