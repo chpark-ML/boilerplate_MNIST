@@ -1,0 +1,7 @@
+# train config
+defaults:
+  - data: MNIST
+  - model: resnet18
+  - optimizer: adamw
+  - scheduler: onecycle
+  - trainer: trainer

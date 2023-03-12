@@ -1,0 +1,9 @@
+_target_: torch.optim.lr_scheduler.OneCycleLR
+optimizer:
+max_lr:
+total_steps:
+epochs:
+steps_per_epoch:
+pct_start: 0.3
+anneal_strategy: cos
+verbose: False
