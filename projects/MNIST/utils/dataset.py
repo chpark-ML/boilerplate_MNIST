@@ -4,7 +4,8 @@ from torchvision.datasets import MNIST
 # dataset
 class MNIST_Dataset(Dataset):
     def __init__(self, mode="train"):
-        self.x_data = MNIST(download_root, transform=mnist_transform, train=True, download=True)
+        mode = True if mode == "train" else False
+        self.x_data = MNIST(download_root='./', train=mode, download=True)
         self.y_data = None
 
     def __getitem__(self, index): 
