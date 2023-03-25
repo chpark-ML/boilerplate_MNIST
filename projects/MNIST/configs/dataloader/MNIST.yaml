@@ -1,5 +1,6 @@
+__target__: torch.utils.data.DataLoader
 datasets:
-  _target_: 
+  _target_: projects.MNIST.utils.dataset.MNIST_Dataset
   data_path: 
   size:
     - 32
