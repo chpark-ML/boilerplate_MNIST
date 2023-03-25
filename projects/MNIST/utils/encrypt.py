@@ -86,12 +86,12 @@ def main() -> None:
         encryption_key = Fernet.generate_key()
     else:
         encryption_key = _ENCRYPTION_KEY
-    prefix = '/opt/lct/projects/nodule_segmentation/outputs/buffer_8_smoothing_0.01/2023-03-17_12-27-36'
+    prefix = 'projects/MNIST/...'
     path_to_load_weight = prefix + '/model.pth'
     path_to_save_encrypted = prefix
     file_name = 'ml.pt.enc'
 
-    sample = torch.rand((1, 1, 48, 72, 72), dtype=torch.float32)
+    sample = torch.rand((1, 1, 32, 32), dtype=torch.float32)
 
     # load checkpoint
     model = hydra.utils.instantiate(cfg, _recursive_=False)
