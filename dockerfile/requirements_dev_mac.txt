@@ -1,0 +1,13 @@
+hydra-core
+h5py
+joblib
+matplotlib
+mlflow
+omegaconf
+openpyxl
+pandas
+pydicom
+pylidc
+pylint
+seaborn
+tqdm
